@@ -1,0 +1,19 @@
+@use "base/variables" as *;
+@use "mixins/mixins" as *;
+@use "functions/functions" as *;
+@use "base/reset";
+@use "base/typography";
+@use "layout/layout";
+
+// Add your global styles here
+body {
+  background-color: yellow;
+
+  @include breakpoint(sm) {
+    background-color: red;
+  }
+}
+
+h1 {
+  font-size: calculate-rem(15);
+}

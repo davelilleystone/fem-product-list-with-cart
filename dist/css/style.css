@@ -1,0 +1,30 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  display: flex;
+}
+
+body {
+  background-color: yellow;
+}
+@media (min-width: 576px) {
+  body {
+    background-color: red;
+  }
+}
+
+h1 {
+  font-size: 0.9375rem;
+}
+
+/*# sourceMappingURL=style.css.map */
