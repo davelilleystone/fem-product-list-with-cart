@@ -7,10 +7,11 @@ const createProducts = () => {
         name: title,
         category,
         price,
+        id,
         image: { mobile, tablet, desktop },
       } = product;
       return `
-      <article class="product-card">
+      <article class="product-card" data-product-id=${id}>
         <picture class="product-card__image">
           <source srcset=${mobile} media="(max-width: 480px)">
           <source srcset=${tablet} media="(max-width: 768px)">
