@@ -1,0 +1,19 @@
+{
+  "name": "sass-typescript-project",
+  "version": "1.0.0",
+  "scripts": {
+    "sass": "sass src/scss/main.scss dist/css/style.css --style expanded",
+    "sass:watch": "sass --watch src/scss/main.scss:dist/css/style.css",
+    "tsc": "tsc",
+    "tsc:watch": "tsc --watch",
+    "build": "npm run sass && npm run tsc",
+    "dev": "npm run sass:watch & npm run tsc:watch"
+  },
+  "devDependencies": {
+    "eslint": "^9.18.0",
+    "globals": "^15.14.0",
+    "sass": "^1.60.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.20.0"
+  }
+}

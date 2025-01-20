@@ -11,10 +11,6 @@ body {
 }
 
 body {
-  display: flex;
-}
-
-body {
   background-color: yellow;
 }
 @media (min-width: 576px) {
