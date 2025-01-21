@@ -11,9 +11,9 @@ const createProducts = () => {
           <img src=${desktop} alt="${title}" class="product-card__img">
         </picture>
         <div class="product-card__buttons">
-          <button class="product-card__button product-card__button--increment">+</button>
-          <button class="product-card__button product-card__button--add">Add to Cart</button>
-          <button class="product-card__button product-card__button--decrement">-</button>
+          <button class="product-card__button product-card__button--increment" data-btn="inc">+</button>
+          <button class="product-card__button product-card__button--add " data-btn="add">Add to Cart</button>
+          <button class="product-card__button product-card__button--decrement" data-btn="dec">-</button>
         </div>
         <div class="product__details">
           <span class="product-card__category">${category}</span>

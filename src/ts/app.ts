@@ -7,13 +7,15 @@ productRoot?.insertAdjacentHTML("afterbegin", createProducts());
 
 const productCards = document.querySelectorAll(".product-card");
 
-productCards.forEach((card) =>
-  card.addEventListener("click", (evt) => {
-    const clicked_btn = evt.target;
-    const product = evt.currentTarget;
-    const productId = evt.currentTarget.dataset.productId;
-    console.log({ clicked_btn, product, productId });
+const handleProductBtnClick = (evt) => {
+  const clicked_btn = evt.target;
+  const clicked_btn_type = clicked_btn.dataset.btn;
+  const product = evt.currentTarget;
+  const productId = evt.currentTarget.dataset.productId;
 
-    console.log(product.querySelector(".product-card__button--add"));
-  })
+  console.log({ clicked_btn, clicked_btn_type, product, productId });
+};
+
+productCards.forEach((card) =>
+  card.addEventListener("click", handleProductBtnClick)
 );
