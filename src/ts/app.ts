@@ -1,4 +1,7 @@
 import createProducts from "./createProducts.js";
+import shoppingCart from "./shoppingCart.js";
+
+console.log(shoppingCart.isEmpty);
 
 const productRoot = document.querySelector(".product-container");
 
@@ -7,18 +10,12 @@ productRoot?.insertAdjacentHTML("afterbegin", createProducts());
 
 const productCards = document.querySelectorAll(".product-card");
 
+// event handlers
+
 const handleAddToCart = (product: HTMLElement) => {
   console.log("add product to cart");
   console.log(product);
 };
-
-// const handleIncrementProductQuantity = () => {
-//   console.log("inc product");
-// };
-
-// const handleDecrementProductQuantity = () => {
-//   console.log("dec product");
-// };
 
 const handleUpdateCart = (action: "inc" | "dec", product: HTMLElement) => {
   console.log("Update cart: " + action);
