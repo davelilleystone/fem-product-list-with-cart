@@ -24,8 +24,10 @@ const createProducts = () => {
         </div>
         <div class="product__details">
           <span class="product-card__category">${category}</span>
-          <h2 class="product-card__title">${title}</h2>
-          <span class="product__price">$${Number(price).toFixed(2)}</span>
+          <h2 class="product-card__title" data-product-description="${title}">${title}</h2>
+          <span class="product__price" data-product-price=${Number(
+            price
+          ).toFixed(2)} >$${Number(price).toFixed(2)}</span>
         </div>
       </article>
     `;
