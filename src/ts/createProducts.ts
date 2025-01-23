@@ -11,7 +11,9 @@ const createProducts = () => {
         image: { mobile, tablet, desktop },
       } = product;
       return `
-      <article class="product-card" data-product-id=${id}>
+      <article class="product-card" data-product-id=${id} data-product-description="${title}" data-product-price=${Number(
+        price
+      ).toFixed(2)}>
         <picture class="product-card__image">
           <source srcset=${mobile} media="(max-width: 480px)">
           <source srcset=${tablet} media="(max-width: 768px)">
@@ -24,10 +26,8 @@ const createProducts = () => {
         </div>
         <div class="product__details">
           <span class="product-card__category">${category}</span>
-          <h2 class="product-card__title" data-product-description="${title}">${title}</h2>
-          <span class="product__price" data-product-price=${Number(
-            price
-          ).toFixed(2)} >$${Number(price).toFixed(2)}</span>
+          <h2 class="product-card__title">${title}</h2>
+          <span class="product__price">$${Number(price).toFixed(2)}</span>
         </div>
       </article>
     `;
