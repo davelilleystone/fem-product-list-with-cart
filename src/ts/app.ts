@@ -12,39 +12,28 @@ const productCards = document.querySelectorAll(".product-card");
 // event handlers
 
 const handleAddToCart = (product: HTMLElement) => {
-  const productId = +product.dataset.productId;
-
-  if (shoppingCart.lineItemExists(productId)) {
+  const productId = product.dataset.productId;
+  // test to determine if line item already exists -
+  if (shoppingCart.lineItemExists(+productId)) {
     return;
   }
-
-  const productDescription = product.dataset.productDescription;
-  const productPrice = product.dataset.productPrice;
-
-  shoppingCart.addLineItem(+productId, productDescription, +productPrice);
-
-  const addToCartBtn: HTMLElement = product.querySelector(
-    ".product-card__button--add"
-  );
-
-  if (addToCartBtn) {
-    updateElementTextContent(addToCartBtn, "1");
-  } else {
-    throw Error();
-  }
-
-  console.log(shoppingCart);
+  shoppingCart.updateLineItem("new", product);
 };
 
 const handleUpdateCart = (action: "inc" | "dec", product: HTMLElement) => {
-  console.log("Update cart: " + action);
-  console.log(product);
+  // const productId = product.dataset.
+  const productId = product.dataset.productId;
+  // product not in cart so ignore click
+  if (!shoppingCart.lineItemExists(+productId)) {
+    return;
+  }
+  // handle action
+  shoppingCart.updateLineItem(action, product);
 };
 
 const handleProductBtnClick = (evt: MouseEvent) => {
   // check to make sure that it is actually a button being clicked within the product card
   if (!evt.target.matches("button")) {
-    // console.log("not a button!");
     return;
   }
 

@@ -6,9 +6,27 @@
     <script type="module" src="./dist/js/app.js"></script>
     <link rel="stylesheet" href="./dist/css/style.css" />
     <title>Project</title>
+
+    <style>
+      main {
+        display: flex;
+      }
+    </style>
   </head>
   <body>
     <h1>Hello World</h1>
-    <div class="product-container"></div>
+    <main>
+      <section class="product-container"></section>
+      <section class="cart-container">
+        <div class="cart">
+          <h2 class="cart__heading">
+            Your Cart(<span class="cart__line-quantity">0</span>)
+          </h2>
+          <div class="cart__details">
+            <p>Cart Empty</p>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
