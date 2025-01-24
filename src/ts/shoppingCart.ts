@@ -2,7 +2,7 @@ import LineItem from "./cartLineItem.js";
 
 class ShoppingCart {
   cart: LineItem[] = [];
-
+  checkOutRoot: HTMLElement = document.querySelector(".cart__details");
   // constructor() {
 
   // }
@@ -19,31 +19,46 @@ class ShoppingCart {
 
   lineItemExists(id: number) {
     console.log("line item exists called");
-    console.log();
     return this.getLineItem(id);
   }
 
   updateLineItem(action, product) {
+    let updateCheckout = false;
     const productId = +product.dataset.productId;
     if (action === "new") {
-      console.log("create new line item");
       this.addLineItem(
         productId,
         product.dataset.productDescription,
         +product.dataset.productPrice
       );
-      console.dir(this.getCart());
-    } else if (action === "inc") {
-      console.log("increment line quantity and update line total");
-      this.getLineItem(productId)
-        ?.updateLineQuantity("inc")
-        .updateLineItemTotal();
-      console.dir(this.getCart());
-    } else if (action === "dec") {
-      console.log("decremet line quantity and update line total");
+      updateCheckout = true;
+    } else if (action === "inc" || action === "dec") {
+      const lineItem = this.getLineItem(productId);
+      if (action === "inc") {
+        // lineItem?.updateLineQuantity("inc");
+        // lineItem?.updateLineTotal();
+        lineItem?.updateLineQuantityAndTotal("inc");
+        updateCheckout = true;
+      } else {
+        const currentQuantity = lineItem?.getLineQuantity();
+        if (currentQuantity === 1) {
+          // ignore click if line item quantity = 1
+        } else {
+          lineItem?.updateLineQuantityAndTotal("dec");
+          updateCheckout = true;
+        }
+      }
     } else {
-      console.log("An error has occured");
+      throw Error("Error in updateLineItem - unknown action");
     }
+    if (updateCheckout) {
+      console.log("Checkout to be updated");
+      this.updateCheckout();
+    }
+  }
+
+  updateCheckout() {
+    console.log(this.checkOutRoot);
   }
 
   getLineItem(id: number) {
@@ -56,9 +71,9 @@ class ShoppingCart {
     return this.cart;
   }
 
-  get cartTotal() {
-    return this.cart.reduce(acc, (lineItem) => (acc += lineItem.lineItemTotal));
-  }
+  // get cartTotal() {
+  //   return this.cart.reduce((acc, lineItem) => (acc += lineItem.lineItemTotal));
+  // }
 
   get isEmpty() {
     return this.cart.length === 0;

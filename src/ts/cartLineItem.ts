@@ -22,8 +22,17 @@ class LineItem {
     return this;
   }
 
-  updateLineItemTotal() {
+  updateLineTotal() {
     this.lineItemTotal = this.lineItemQuantity * this.lineItemCost;
+  }
+
+  updateLineQuantityAndTotal(action: "inc" | "dec") {
+    this.updateLineQuantity(action);
+    this.updateLineTotal();
+  }
+
+  getLineQuantity() {
+    return this.lineItemQuantity;
   }
 }
 
