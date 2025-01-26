@@ -19,7 +19,6 @@ class LineItem {
     } else if (action === "dec") {
       this.lineItemQuantity -= 1;
     }
-    return this;
   }
 
   updateLineTotal() {
